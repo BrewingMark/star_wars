@@ -1,5 +1,9 @@
 <template lang="html">
-
+  <div>
+    <h1>Characters</h1>
+    <film-filter-form :films="films" />
+    <film-detail v-if="selectedFilm" :film="selectedFilm"/>
+  </div>
 </template>
 
 <script>
@@ -7,7 +11,8 @@ export default {
   name: 'app',
   data(){
     return {
-      films: []
+      films: [],
+      selectedFilm: null
     }
   },
   mounted(){
