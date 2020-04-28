@@ -7,6 +7,11 @@
 </template>
 
 <script>
+
+import FilmFilterForm from './components/FilmFilterForm.vue'
+import FilmDetail from './components/FilmDetail.vue'
+import {eventBus} from './main.js';
+
 export default {
   name: 'app',
   data(){
@@ -15,10 +20,18 @@ export default {
       selectedFilm: null
     }
   },
+  components: {
+    "film-filter-form": FilmFilterForm,
+    "film-detail": FilmDetail
+  },
   mounted(){
     fetch('https://swapi.dev/api/films/')
     .then(res => res.json())
     .then(data => this.films = data.results)
+
+    eventBus.$on('film-selected', (film) => {
+      this.selectedFilm = film
+    })
   }
 }
 </script>

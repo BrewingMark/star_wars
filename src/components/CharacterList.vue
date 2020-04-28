@@ -1,6 +1,6 @@
 <template lang="html">
   <div v-if="characters" class="character-list">
-    <h3>character List</h3>
+    <h3>Character List</h3>
     <ul>
       <character-list-item v-for="(character, index) in characters" :key="index" :character="character"></Character-list-item >
     </ul>
